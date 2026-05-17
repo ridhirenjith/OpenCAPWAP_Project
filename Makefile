@@ -82,7 +82,7 @@ AC_OBJS = AC.o ACConfigFile.o ACMainLoop.o ACDiscoveryState.o ACJoinState.o \
 	ACConfigureState.o ACDataCheckState.o ACRunState.o ACProtocol_User.o \
 	ACRetransmission.o CWCommon.o CWConfigFile.o CWErrorHandling.o CWList.o \
 	CWLog.o ACMultiHomedSocket.o ACProtocol.o CWSafeList.o CWNetwork.o CWProtocol.o \
-	CWRandom.o CWSecurity.o CWOpenSSLBio.o CWStevens.o CWThread.o CWBinding.o CWVendorPayloadsAC.o \
+	CWRandom.o CWStevens.o CWThread.o CWBinding.o CWVendorPayloadsAC.o \
 	ACBinding.o ACInterface.o ACSettingsFile.o timerlib.o tap.o \
 	ACIEEEConfigurationState.o CW80211InformationElements.o CWTunnel.o CWAVL.o \
 	./HostapdHeaders/utils/os_unix.o \
@@ -91,7 +91,7 @@ AC_OBJS = AC.o ACConfigFile.o ACMainLoop.o ACDiscoveryState.o ACJoinState.o \
 WTP_OBJS = WTP.o WTPFrameReceive.o WTPFreqStatsReceive.o WTPStatsReceive.o WTPConfigFile.o WTPProtocol.o WTPProtocol_User.o \
 	WTPDiscoveryState.o WTPJoinState.o WTPConfigureState.o WTPDataCheckState.o WTPRunState.o WTPRunStateCheck.o \
 	WTPRetransmission.o WTPSulkingState.o CWCommon.o CWConfigFile.o CWErrorHandling.o CWSafeList.o CWList.o CWLog.o CWNetwork.o \
-	CWProtocol.o CWRandom.o CWSecurity.o CWOpenSSLBio.o CWStevens.o CWThread.o CWBinding.o CWVendorPayloadsWTP.o WTPBinding.o \
+	CWProtocol.o CWRandom.o CWStevens.o CWThread.o CWBinding.o CWVendorPayloadsWTP.o WTPBinding.o \
 	WTPDriverInteraction.o WTPSettingsFile.o timerlib.o \
 	WTPRadio.o WTPNL80211DriverCallback.o WTPNL80211Driver.o WTPNL80211Netlink.o WTPIEEEConfigurationState.o CW80211ManagementFrame.o CW80211InformationElements.o CWTunnel.o CWAVL.o \
 	./HostapdHeaders/utils/os_unix.o \
