@@ -168,8 +168,10 @@ CWBool CWNetworkInitSocketServerMultiHomed(CWMultiHomedSocket *sockPtr,
 		}
 		
 		/* reuse address */
-		setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
-		
+		/* reuse address */
+setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+		setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));
+setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));	
 		/* bind address */
 		sock_set_port_cw(ifi->ifi_addr, htons(port));
 		
@@ -228,6 +230,7 @@ CWBool CWNetworkInitSocketServerMultiHomed(CWMultiHomedSocket *sockPtr,
 		
 		/* reuse address */
 		setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+		setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));
 		
 		/* bind address */
 		sock_set_port_cw(ifi->ifi_addr, htons(port+1));
@@ -264,6 +267,7 @@ CWBool CWNetworkInitSocketServerMultiHomed(CWMultiHomedSocket *sockPtr,
 			
 			/* reuse address */
 			setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+		setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));
 			
 			sock_set_port_cw(ifi->ifi_brdaddr, htons(port));
 			
@@ -392,6 +396,7 @@ fail:
 success:
 	/* reuse address */
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+		setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));
 	CW_ZERO_MEMORY(&wildaddr, sizeof(wildaddr));
 	
 #ifdef	IPV6
@@ -472,6 +477,7 @@ success:
 			
 			/* reuse address */
 			setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+		setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(yes));
 	
 			if(bind(sock, res->ai_addr, res->ai_addrlen) == 0) break; /* success */
 			
