@@ -16,5 +16,3 @@ CWBool CWSecurityInitSessionServer(CWSocket sock, CWNetworkLev4Address addr, CWS
 CWBool CWSecurityInitSessionServerDataChannel(CWSocket sock, CWNetworkLev4Address addr, CWSecurityContext ctx, CWSecuritySession *sp) { return 0; }
 CWBool CWSecurityInitGenericSessionServerDataChannel(void *list, CWSocket sock, CWSecurityContext ctx, CWSecuritySession *sp) { return 0; }
 void   CWNetworkDeleteMHInterface(void *iface) {}
-int CWGetSeqNum(void) { return 0; }
-int CWGetFragmentID(void) { return 0; }

@@ -38,7 +38,7 @@
 
 
 
-CC = gcc 
+CC = gcc -fcommon 
 
 LDFLAGS = -lssl -lcrypto -lpthread -ldl -D_REENTRANT
 
