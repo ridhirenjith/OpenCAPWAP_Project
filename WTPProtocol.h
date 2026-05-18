@@ -179,7 +179,6 @@ CWBool CWWTPGetRadiosInformation(CWRadiosInformation *valPtr);
 int CWWTPGetACIndex();
 char* CWWTPGetACName();
 int CWWTPGetFrameTunnelMode();
-int CWWTPGetECNSupport(void);
 CWBool CWGetWTPRadiosOperationalState(int radioID, CWRadiosOperationalInfo *valPtr);
 CWBool CWAssembleMsgElemDecryptErrorReport(CWProtocolMessage *msgPtr, int radioID);
 CWBool CWAssembleMsgElemDuplicateIPv6Address(CWProtocolMessage *msgPtr);

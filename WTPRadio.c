@@ -6,8 +6,6 @@
  ***************************************/
  
 #include "CWWTP.h"
-CWBool nl80211CmdSetNewMonitorInterface(int indexPhy, WTPInterfaceInfo * interfaceInfo);
-CWBool nl80211_get_channel_width(char * interface);
 
 struct WTPBSSInfo ** WTPGlobalBSSList;
 nodeAVL * avlTree = NULL;

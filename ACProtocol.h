@@ -236,5 +236,4 @@ CWBool CWACSupportIPv6();
 void CWDestroyDiscoveryRequestValues(CWDiscoveryRequestValues *valPtr);
 
 CWBool CWProtocolAssembleConfigurationUpdateRequest(CWProtocolMessage **msgElems, int *msgElemCountPtr, int MsgElementType);
-int CWACGetECNSupport(void);
 #endif

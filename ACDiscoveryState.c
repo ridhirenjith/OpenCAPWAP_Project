@@ -45,6 +45,15 @@
 /*__________________________________________________________*/
 /*  *******************___PROTOTYPES___*******************  */
 
+__inline__ int CWACGetHWVersion();
+__inline__ int CWACGetSWVersion();
+__inline__ int CWACGetStations();
+__inline__ int CWACGetLimit();
+__inline__ int CWACGetActiveWTPs();
+__inline__ int CWACGetMaxWTPs();
+__inline__ int CWACGetSecurity();
+__inline__ char *CWACGetName();
+__inline__ int CWACGetInterfacesCount();
 
 /*_________________________________________________________*/
 /*  *******************___FUNCTIONS___*******************  */
@@ -125,7 +134,7 @@ CWBool CWParseDiscoveryRequestMessage(char *msg,
 	
 	//Elena Agostini: nl80211 support
 	valuesPtr->tmpPhyInfo.numPhyActive=0;
-	CW_CREATE_ARRAY_CALLOC_ERR(valuesPtr->tmpPhyInfo.singlePhyInfo, WTP_RADIO_MAX, WTPSinglePhyInfo, return CWErrorRaise(CW_ERROR_OUT_OF_MEMORY, NULL););
+	CW_CREATE_ARRAY_CALLOC_ERR(valuesPtr->tmpPhyInfo.singlePhyInfo, WTP_RADIO_MAX, ACWTPSinglePhyInfo, return CWErrorRaise(CW_ERROR_OUT_OF_MEMORY, NULL););
 
 
 	if(msg == NULL || seqNumPtr == NULL || valuesPtr == NULL) 
