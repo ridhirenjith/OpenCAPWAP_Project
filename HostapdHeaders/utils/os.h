@@ -5,10 +5,9 @@
  * This software may be distributed under the terms of the BSD license.
  * See README for more details.
  */
+
 #ifndef OS_H
 #define OS_H
-#include <string.h>
-#include <stdlib.h>
 
 typedef long os_time_t;
 

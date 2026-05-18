@@ -213,7 +213,6 @@ CWBool CWParseWTPDeleteStation (CWProtocolMessage *msgPtr, int len, CWMsgElemDat
 
 //---------------------------------------------------------/
 CWBool CWACGetACIPv4List(int **listPtr, int *countPtr);
-CWBool CWAssembleMsgElemACWTPRadioInformation(CWProtocolMessage *msgPtr, int radioID, char phyStandardValue);
 CWBool CWACGetACIPv6List(struct in6_addr **listPtr, int *countPtr);
 char *CWACGetName(void);
 int CWACGetHWVersion(void);

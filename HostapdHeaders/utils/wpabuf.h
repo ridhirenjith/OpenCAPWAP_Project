@@ -11,9 +11,6 @@
 
 /* wpabuf::buf is a pointer to external data */
 #define WPABUF_FLAG_EXT_DATA BIT(0)
-#include <stddef.h>
-#include <string.h>
-#include "common.h"
 
 /*
  * Internal data structure for wpabuf. Please do not touch this directly from

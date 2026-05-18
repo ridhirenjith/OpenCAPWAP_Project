@@ -38,7 +38,6 @@
 #include <time.h>
 #include "CWCommon.h"
 #include "WUM.h"
-#include <ctype.h>
 
 /* WUA Constants */
 #define BUF_SIZE        1024

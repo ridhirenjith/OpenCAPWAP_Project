@@ -72,7 +72,7 @@ void CWACSetNewGenericHandshakeDataThread(genericHandshakeThreadPtr * genericThr
 void CWACSetNewGenericHandshakeDataThread(genericHandshakeThreadPtr * genericThreadStruct, CWNetworkLev4Address * addrPtr, CWSocket sock, char * pData, int readBytes) {
 	/* Se nessuno sta gestendo l'handshake creo un nuovo thread generico */
 	
-	CW_CREATE_OBJECT_ERR((*genericThreadStruct), genericHandshakeThread, return ; );
+	CW_CREATE_OBJECT_ERR((*genericThreadStruct), genericHandshakeThread, return NULL; );
 	
 	if(addrPtr == NULL) return;
 
@@ -187,8 +187,7 @@ void CWACManageIncomingPacket(CWSocket sock,
 	CWBool dataFlagTmp;
 	CWProtocolMessage msgDataChannel;
 	char *valSessionIDPtr=NULL;
-	int KeepAliveLenght=0;
-unsigned short int elemType, elemLen;
+	int KeepAliveLenght=0, elemType, elemLen;
 	CWSecuritySession sessionDataGeneric;
 	int pathMTU, indexTmpThread=0;
 /*
@@ -308,7 +307,7 @@ unsigned short int elemType, elemLen;
 			
 			if(!CWParseTransportHeader(&msgDataChannel, &values, &dataFlag, NULL)){
 				CWDebugLog("CWParseTransportHeader failed");
-				return ;
+				return CW_FALSE;
 			}
 			
 			if(msgDataChannel.data_msgType == CW_DATA_MSG_KEEP_ALIVE_TYPE) {
@@ -1322,9 +1321,7 @@ CW_THREAD_RETURN_TYPE CWGenericWTPDataHandshake(void *arg) {
 	CWWTPManager *wtpPtr = NULL;
 	struct sockaddr_in *tmpAdd;
 	CWSecuritySession sessionDataGeneric;
-	int pathMTU, readBytes, countPacketDataList, fragments, i;
-CWBool dataFlag=1;
-unsigned short int elemLen, elemType;
+	int pathMTU, readBytes, countPacketDataList, dataFlag=1, elemLen, elemType, fragments, i;
 	char buf[CW_BUFFER_SIZE];
 	char * pData, * valSessionIDPtr;
 	CWProtocolMessage msg, msgDataChannel;

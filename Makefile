@@ -75,7 +75,6 @@ CFLAGS += -DOPENSSL_NO_KRB5
 
 CFLAGS += -I/usr/include/libnl3
 CFLAGS += -I./HostapdHeaders/utils/
-CFLAGS += -include stdio.h -include stdlib.h -include string.h -include strings.h -include unistd.h -include sys/socket.h
 RM = /bin/rm -f 
 
 # list of generated object files for AC. 
