@@ -632,8 +632,8 @@ CWBool CW80211ParseFrameIEAuthAlgo(char * frameReceived, int * offsetFrameReceiv
 CWBool CW80211ParseFrameIEAuthTransaction(char * frameReceived, int * offsetFrameReceived, short int * value);
 CWBool CW80211ParseFrameIESSID(char * frameReceived, int * offsetFrameReceived, char ** value);
 CWBool CW80211ParseFrameIEListenInterval(char * frameReceived, int * offsetFrameReceived, short int * value);
-CWBool CW80211ParseFrameIESupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, int * lenIE);
-CWBool CW80211ParseFrameIEExtendedSupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, int * lenIE);
+CWBool CW80211ParseFrameIESupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, short int * lenIE);
+CWBool CW80211ParseFrameIEExtendedSupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, short int * lenIE);
 CWBool CW80211SetAssociationID(short int * assID);
 CWBool CW80211ParseAssociationResponse(char * frame, struct CWFrameAssociationResponse * assocResponse);
 CWBool CW80211ParseDataFrameToDS(char * frame, struct CWFrameDataHdr * dataFrame);

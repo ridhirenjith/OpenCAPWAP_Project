@@ -43,6 +43,7 @@
 #ifdef DMALLOC
 #include "../dmalloc-5.5.0/dmalloc.h"
 #endif
+CWBool CWSecurityInitGenericSessionServerDataChannel(CWSafeList packetDataList, CWNetworkLev4Address *addrPtr, CWSocket sock, CWSecurityContext ctx, CWSecuritySession *sp, int *pathMTU);
 
 /* index of the current thread in the global array */
 CWThreadSpecific gIndexSpecific;

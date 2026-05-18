@@ -298,7 +298,7 @@ CWBool CW80211AssembleIEDSSS(char * frame, int * offset, char value) {
 
 CWBool CW80211AssembleIEMaxIdlePeriod(char * frame, int * offset, short int value) {
 	
-	char val=IE_TYPE_BSS_MAX_IDLE_PERIOD;	
+	short val=IE_TYPE_BSS_MAX_IDLE_PERIOD;	
 	CW_COPY_MEMORY(frame, &(val), IE_TYPE_LEN);
 	(*offset) += IE_TYPE_LEN;
 	
@@ -448,7 +448,7 @@ CWBool CW80211ParseFrameIESSID(char * frameReceived, int * offsetFrameReceived, 
 	return CW_TRUE;
 }
 
-CWBool CW80211ParseFrameIESupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, int * lenIE) {
+CWBool CW80211ParseFrameIESupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, short int * lenIE) {
 	
 	if(frameReceived[0] != IE_TYPE_SUPP_RATES)
 		return CW_FALSE;
@@ -470,7 +470,7 @@ CWBool CW80211ParseFrameIESupportedRates(char * frameReceived, int * offsetFrame
 	return CW_TRUE;
 }
 
-CWBool CW80211ParseFrameIEExtendedSupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, int * lenIE) {
+CWBool CW80211ParseFrameIEExtendedSupportedRates(char * frameReceived, int * offsetFrameReceived, char ** value, short int * lenIE) {
 	
 	if(frameReceived[0] != IE_TYPE_EXT_SUPP_RATES)
 		return CW_FALSE;
@@ -1397,7 +1397,7 @@ CWBool CW80211ParseAuthResponse(char * frame, struct CWFrameAuthResponse * authR
 		return CW_FALSE;
 	
 	//DA
-	if(!CW80211ParseFrameIEAddr((frame+offset), &(offset), &(authResponse->DA)))
+	if(!CW80211ParseFrameIEAddr((frame+offset), &(offset), authResponse->DA))
 		return CW_FALSE;
 	
 	//SA

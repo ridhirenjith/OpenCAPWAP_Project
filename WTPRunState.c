@@ -137,7 +137,7 @@ CW_THREAD_RETURN_TYPE CWWTPReceiveDtlsPacket(void *arg) {
 
 	int 			readBytes;
 	char 			buf[CW_BUFFER_SIZE];
-	CWSocket 		sockDTLS = (CWSocket)arg;
+	CWSocket sockDTLS = (CWSocket)(intptr_t)arg;
 	CWNetworkLev4Address	addr;
 	char* 			pData;
 	CWBool gWTPDataChannelLocalFlag=CW_FALSE, gWTPExitRunEchoLocal=CW_FALSE;
@@ -209,7 +209,7 @@ CW_THREAD_RETURN_TYPE CWWTPReceiveDataPacket(void *arg) {
 	int 			n,readBytes;
 	char 			buf[CW_BUFFER_SIZE];
 	struct sockaddr_ll 	rawSockaddr;	
-	CWSocket 		sockDTLS = (CWSocket)arg;
+	CWSocket sockDTLS = (CWSocket)(intptr_t)arg;
 	CWNetworkLev4Address	addr;
 	char* 			pData;
 	CWBool gWTPDataChannelLocalFlag=CW_FALSE, gWTPExitRunEchoLocal=CW_FALSE;
@@ -624,7 +624,7 @@ CWStateTransition CWWTPEnterRun() {
 	CWThread thread_manageDataPacket;
 	if(!CWErr(CWCreateThread(&thread_manageDataPacket, 
 				 CWWTPManageDataPacket,
-				 (void*)gWTPDataSocket))) {
+				 (void*)(intptr_t)gWTPDataSocket))) {
 		
 		CWLog("Error starting Thread that receive DTLS DATA packet");
 		CWNetworkCloseSocket(gWTPDataSocket);
@@ -2119,10 +2119,10 @@ CWBool CWParseConfigurationUpdateRequest (char *msg,
 CWBool CWParseStationConfigurationRequest(char *msg, int len, int * BSSIndex, int * STAIndex, int * typeOp) 
 {
 	int radioID, wlanID, supportedRatesLen;
-	unsigned char * address;
+        char * address;
 	short int assID, capability;
 	char flags;
-	unsigned char * supportedRates;
+	char * supportedRates;
 	
 	//CWBool bindingMsgElemFound=CW_FALSE;
 	CWProtocolMessage completeMsg;
