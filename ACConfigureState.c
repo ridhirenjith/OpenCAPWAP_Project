@@ -142,7 +142,7 @@ CWBool CWParseConfigureRequestMessage(char *msg,
 	CWControlHeaderValues controlVal;
 	int i,j;
 	int offsetTillMessages;
-	char * tmpSuppRates;
+	unsigned char * tmpSuppRates;
 	int radioID, rateLen, indexRadio;
 	
 	CWProtocolMessage completeMsg;
@@ -260,7 +260,7 @@ CWBool CWParseConfigureRequestMessage(char *msg,
 			
 			case CW_MSG_ELEMENT_IEEE80211_SUPPORTED_RATES_CW_TYPE:
 				
-				CW_CREATE_ARRAY_CALLOC_ERR(tmpSuppRates, CW_80211_MAX_SUPP_RATES, char, return CWErrorRaise(CW_ERROR_OUT_OF_MEMORY, NULL););
+				CW_CREATE_ARRAY_CALLOC_ERR(tmpSuppRates, CW_80211_MAX_SUPP_RATES, unsigned char, return CWErrorRaise(CW_ERROR_OUT_OF_MEMORY, NULL););
 				if(!(CWParseWTPSupportedRates(&completeMsg, elemLen, &(radioID), &(tmpSuppRates), &(rateLen))))
 					break;	
 				

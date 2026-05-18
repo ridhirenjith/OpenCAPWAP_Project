@@ -306,5 +306,8 @@ void CWWTPRetransmitTimerExpiredHandler(CWTimerArg arg);
 
 				   
 extern CWBool WTPExitOnUpdateCommit;
-
+CWBool CWParseIEEEConfigurationRequestMessage(char *msg, int len, int seqNum, ACInterfaceRequestInfo *interfaceInfo);
+CWBool CWSaveIEEEConfigurationRequestMessage(ACInterfaceRequestInfo *interfaceACInfo);
+CWBool CWAssembleIEEEConfigurationResponse(CWProtocolMessage **messagesPtr, int *fragmentsNumPtr, int PMTU, int seqNum, int resultCode, int radioID, int wlanID, char *bssidAssigned);
+int getBSSIndex(int radioID, int wlanID);
 #endif

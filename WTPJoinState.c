@@ -181,7 +181,7 @@ CWStateTransition CWWTPEnterJoin() {
 	CWThread thread_receiveFrame;
 	if(!CWErr(CWCreateThread(&thread_receiveFrame, 
 				 CWWTPReceiveDtlsPacket,
-				 (void*)gWTPSocket))) {
+				 (void*)(intptr_t)gWTPSocket))) {
 		
 		CWLog("Error starting Thread that receive DTLS packet");
 		timer_rem(waitJoinTimer, NULL);
@@ -197,7 +197,7 @@ CWStateTransition CWWTPEnterJoin() {
 	CWThread thread_receiveDataFrame;
 	if(!CWErr(CWCreateThread(&thread_receiveDataFrame, 
 				 CWWTPReceiveDataPacket,
-				 (void*)gWTPDataSocket))) {
+				 (void*)(intptr_t)gWTPSocket))) {
 		
 		CWLog("Error starting Thread that receive data packet");
 		return CW_ENTER_DISCOVERY;
