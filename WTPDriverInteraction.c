@@ -99,7 +99,6 @@ int get_frag(int sock, struct iwreq* wrq)
 }
 
 extern int qosStaticTxq;
-extern int ;
 extern int qosStaticWmeCwMax;
 extern int qosStaticAifsn;
 

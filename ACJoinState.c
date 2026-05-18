@@ -449,7 +449,7 @@ CWBool CWSaveJoinRequestMessage(CWProtocolJoinRequestValues *joinRequest,
 	/*
 	 * Elena Agostini - 04/2014: SessionID string wasn't saved in right way
 	 */
-	 CW_CREATE_ARRAY_ERR(WTPProtocolManager->sessionID, WTP_SESSIONID_LENGTH, unsigned char, return;);
+	 CW_CREATE_ARRAY_ERR(WTPProtocolManager->sessionID, WTP_SESSIONID_LENGTH, unsigned char, return CW_FALSE;);
 	 memcpy(WTPProtocolManager->sessionID, joinRequest->sessionID, WTP_SESSIONID_LENGTH);
 	//CW_CREATE_STRING_FROM_STRING_ERR(WTPProtocolManager->sessionID, joinRequest->sessionID, {return CWErrorRaise(CW_ERROR_WRONG_ARG, NULL);});
 
@@ -523,7 +523,7 @@ CWBool CWSaveJoinRequestMessage(CWProtocolJoinRequestValues *joinRequest,
 			WTPProtocolManager->radiosInfo.radiosInfo[i].gWTPPhyInfo.interfaces[indexWlan].typeInterface = CW_STA_MODE;
 			WTPProtocolManager->radiosInfo.radiosInfo[i].gWTPPhyInfo.interfaces[indexWlan].BSSID = NULL;
 			WTPProtocolManager->radiosInfo.radiosInfo[i].gWTPPhyInfo.interfaces[indexWlan].wlanID = CWIEEEBindingGetDevFromIndexID(indexWlan);
-			if ((joinRequest->frameTunnelMode)!= NULL)
+			if ((joinRequest->frameTunnelMode)!= 0)
 				WTPProtocolManager->radiosInfo.radiosInfo[i].gWTPPhyInfo.interfaces[indexWlan].frameTunnelMode=joinRequest->frameTunnelMode;
 			else 
 				WTPProtocolManager->radiosInfo.radiosInfo[i].gWTPPhyInfo.interfaces[indexWlan].frameTunnelMode=0;

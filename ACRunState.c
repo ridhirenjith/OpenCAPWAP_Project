@@ -1,4 +1,4 @@
-/************************************************************************************************
+-/************************************************************************************************
  * Copyright (c) 2006-2009 Laboratorio di Sistemi di Elaborazione e Bioingegneria Informatica	*
  *                          Universita' Campus BioMedico - Italy								*
  *																								*
@@ -36,6 +36,10 @@
  *	         Antonio Davoli (antonio.davoli@gmail.com)											*
  ************************************************************************************************/
 
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
 #include "CWAC.h"
 #include "CWVendorPayloads.h"
 #include "CWFreqPayloads.h"
@@ -1074,7 +1078,7 @@ CWLog("Prima di CWACSendAcknowledgedPacket");
 					  return CW_FALSE;
     				}
 				  
-					  memset(&(UnixSocksArray[WTPIndex].clntaddr),(int)NULL, sizeof(UnixSocksArray[WTPIndex].clntaddr));
+     					  memset(&(UnixSocksArray[WTPIndex].clntaddr),0, sizeof(UnixSocksArray[WTPIndex].clntaddr));
 					  UnixSocksArray[WTPIndex].clntaddr.sun_family = AF_UNIX;
 					  
 					  //make unix socket client path name by index i 
@@ -1086,7 +1090,7 @@ CWLog("Prima di CWACSendAcknowledgedPacket");
 					
 					unlink(socketctl_path_name);
 					
-					memset(&(UnixSocksArray[WTPIndex].servaddr),(int)NULL, sizeof(UnixSocksArray[WTPIndex].servaddr));
+					memset(&(UnixSocksArray[WTPIndex].servaddr),0, sizeof(UnixSocksArray[WTPIndex].servaddr));
 					UnixSocksArray[WTPIndex].servaddr.sun_family = AF_UNIX;
 
 					//make unix socket server path name by index i 

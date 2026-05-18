@@ -8,7 +8,12 @@
 
 #ifndef COMMON_H
 #define COMMON_H
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <unistd.h>
+#include <sys/socket.h>
 #include "os.h"
 
 #if defined(__linux__) || defined(__GLIBC__)
@@ -441,7 +446,9 @@ void perror(const char *s);
 #define __bitwise __attribute__((bitwise))
 #else
 #define __force
+#ifndef __bitwise
 #define __bitwise
+#endif
 #endif
 
 typedef u16 __bitwise be16;

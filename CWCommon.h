@@ -41,11 +41,13 @@
 #ifndef __CAPWAP_CWCommon_HEADER__
 #define __CAPWAP_CWCommon_HEADER__
 
-
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <time.h>
 #include <sys/time.h>
 #include <errno.h>
