@@ -1,0 +1,16 @@
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    gcc make \
+    libssl-dev \
+    libnl-3-dev \
+    libnl-genl-3-dev \
+    iproute2 \
+    iw \
+    wireless-tools \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /openCAPWAP
+COPY . .
+RUN make clean && make
+RUN mkdir -p /var/log
+CMD ["/bin/bash", "/openCAPWAP/start_wtp.sh"]

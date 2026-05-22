@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  capwap-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  ac:
+    build:
+      context: .
+      dockerfile: Dockerfile.ac
+    container_name: capwap-ac
+    networks:
+      capwap-net:
+        ipv4_address: 172.20.0.2
+    privileged: true
+    ports:
+      - "5246:5246/udp"
+      - "5247:5247/udp"
+
+  wtp:
+    build:
+      context: .
+      dockerfile: Dockerfile.wtp
+    container_name: capwap-wtp
+    networks:
+      capwap-net:
+        ipv4_address: 172.20.0.3
+    privileged: true
+    pid: "host"
+    volumes:
+      - /lib/modules:/lib/modules
+      - /sys:/sys
+      - /dev:/dev
+    depends_on:
+      - ac

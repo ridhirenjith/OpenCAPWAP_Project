@@ -197,7 +197,7 @@ CWStateTransition CWWTPEnterJoin() {
 	CWThread thread_receiveDataFrame;
 	if(!CWErr(CWCreateThread(&thread_receiveDataFrame, 
 				 CWWTPReceiveDataPacket,
-				 (void*)(intptr_t)gWTPSocket))) {
+				 (void*)(intptr_t)gWTPDataSocket))) {
 		
 		CWLog("Error starting Thread that receive data packet");
 		return CW_ENTER_DISCOVERY;

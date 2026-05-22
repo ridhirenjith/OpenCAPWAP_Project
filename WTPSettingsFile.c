@@ -84,7 +84,7 @@ void CWExtractValue(char* start, char** startValue, char** endValue, int* offset
 	*startValue = start +1+ *offset;
 
 	*offset=strcspn (*startValue, " \t\n\r");
-	*endValue = *startValue + *offset -1;
+	*endValue = *startValue;
 }
 
 CWBool CWParseSettingsFile()
@@ -162,7 +162,7 @@ CWBool CWParseSettingsFile()
 			
 			CWExtractValue(endTag, &startValue, &endValue, &offset);
 			
-			int endValueInt = atoi(endValue);
+			int endValueInt = atoi(startValue);
 			if(indexPhy < gPhyInterfaceCount && gPhyInterfaceName != NULL)
 			{
 				//phy1 -> endvalue 1

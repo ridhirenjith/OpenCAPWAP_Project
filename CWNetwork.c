@@ -232,7 +232,7 @@ CWBool CWNetworkInitSocketClientDataChannel(CWSocket *sockPtr, CWNetworkLev4Addr
 #ifdef IPv6
 	sockaddr.sin6_family = (gNetworkPreferredFamily == CW_IPv4) ? AF_INET : AF_INET6;
 #else
-	sockaddr.sin_family == AF_INET;
+	sockaddr.sin_family = AF_INET;
 #endif
 
 	/*
@@ -305,7 +305,7 @@ CWBool CWNetworkInitSocketClientWithPort(CWSocket *sockPtr, CWNetworkLev4Address
 #endif
 
 	/* Elena Agostini - 04/2014 */
-	sockaddr.sin_port = ntohs(portSocket);
+	sockaddr.sin_port = htons(portSocket);
 	CWLog("portSocket: %d", portSocket);
 	if (bind(*sockPtr, (const struct sockaddr *)&sockaddr, addrlen) < 0) { 
 		close(*sockPtr);
@@ -363,12 +363,14 @@ CWBool CWNetworkInitSocketClientDataChannelWithPort(CWSocket *sockPtr, CWNetwork
 #ifdef IPv6
 	sockaddr.sin6_family = (gNetworkPreferredFamily == CW_IPv4) ? AF_INET : AF_INET6;
 #else
-	sockaddr.sin_family == AF_INET;
+	sockaddr.sin_family = AF_INET;
 #endif
 
 	/* Elena Agostini - 04/2014 */
-	sockaddr.sin_port = ntohs(portSocket);
+	sockaddr.sin_port = htons(portSocket);
+	fprintf(stderr, "DATA: binding to port %d (htons=%d)\n", portSocket, htons(portSocket));
 	if (bind(*sockPtr, (const struct sockaddr *)&sockaddr, addrlen) < 0) {
+		fprintf(stderr, "DATA: bind FAILED: %s\n", strerror(errno));
 		close(*sockPtr);
 		CWDebugLog("failed to bind Client socket in <%s> line:%d.\n", __func__,__LINE__);
 		return CW_FALSE;
