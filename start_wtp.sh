@@ -1,17 +1,11 @@
 #!/bin/bash
-mkdir -p /var/log
-cd /openCAPWAP
 
-# Get the hwsim phy index from settings
-PHY=$(grep RADIO_PHY_NAME_0 /openCAPWAP/settings.wtp.txt | sed 's/.*>//')
-echo "Using phy: $PHY"
+cleanup() {
 
-echo "Waiting for AC to be ready..."
-sleep 5
+    echo "Cleaning up..."
+    pkill -f "./WTP" 2>/dev/null
+    sleep 1
+    iw dev WTPWLan00 del 2>/dev/null
+    echo "WTPWLan00 deleted!"
+}
 
-echo "Starting WTP..."
-./WTP /openCAPWAP/ &
-WTP_PID=$!
-sleep 2
-tail -f /var/log/wtp1.txt &
-wait $WTP_PID

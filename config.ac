@@ -25,7 +25,7 @@
 # comment the line by adding a #.
 </AC_FORCE_MTU> 1420
 
-</AC_NAME> My AC
+</AC_NAME> ACCESS CONTROLLER
 
 # The AC will join the Multicast Groups you add here
 <AC_MCAST_GROUPS>

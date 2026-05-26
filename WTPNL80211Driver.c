@@ -118,7 +118,7 @@ CWBool nl80211CmdSetNewMonitorInterface(int indexPhy, WTPInterfaceInfo * interfa
 	CW_CREATE_ARRAY_CALLOC_ERR(interfaceInfo->MACaddr, MAC_ADDR_LEN, char, return CWErrorRaise(CW_ERROR_OUT_OF_MEMORY, NULL););
 	getInterfaceMacAddr(interfaceInfo->ifName, interfaceInfo->MACaddr);
 
-	CWLog("Interface %s created", interfaceInfo->ifName);
+	CWLog("WTP Interface %s created", interfaceInfo->ifName);
 	return CW_TRUE;
 	
  nla_put_failure:
