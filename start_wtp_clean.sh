@@ -12,6 +12,8 @@ cleanup() {
 
     echo "[+] Cleanup triggered..."
 
+    pkill -f "./WTP"
+
     if iw dev | grep -q "$INTERFACE"; then
         echo "[+] Removing interface: $INTERFACE"
         iw dev "$INTERFACE" del
