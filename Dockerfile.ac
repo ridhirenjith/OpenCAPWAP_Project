@@ -9,7 +9,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /openCAPWAP
 COPY . .
-RUN make clean && make
+RUN make clean && \
+    gcc -fcommon -DCW_NO_DTLS -DCW_DEBUGGING -DOPENSSL_NO_KRB5 \
+    -I/usr/include/libnl3 -I./HostapdHeaders/utils/ \
+    -c -o CWStubs.o CWStubs.c && \
+    make
 RUN mkdir -p /var/log
 EXPOSE 5246/udp 5247/udp
 CMD ["/bin/bash", "/openCAPWAP/start_ac.sh"]
