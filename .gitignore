@@ -1,7 +1,5 @@
 *.o
 *.d
-AC
-WTP
 WUA
 build/
 logs/
