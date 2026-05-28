@@ -1151,16 +1151,22 @@ void _CWCloseThread(int i) {
 	
 	gWTPs[i].session = NULL;
 	gWTPs[i].subState = CW_DTLS_HANDSHAKE_IN_PROGRESS;
+	
+	/* Mark as not free BEFORE cleanup to prevent HTTP API access during cleanup */
+	CWThreadMutexLock(&gWTPsMutex);
+	gWTPs[i].isNotFree = CW_FALSE;
+	CWThreadMutexUnlock(&gWTPsMutex);
+	
+	/* Give HTTP API threads time to release their locks */
+	usleep(10000);
+	
+	/* Now safely cleanup internal structures */
 	CWDeleteList(&(gWTPs[i].fragmentsList), CWProtocolDestroyFragment);
 	
 	/* CW_FREE_OBJECT(gWTPs[i].configureReqValuesPtr); */
 	
 	CWCleanSafeList(gWTPs[i].packetReceiveList, free);
 	CWDestroySafeList(gWTPs[i].packetReceiveList);
-
-	CWThreadMutexLock(&gWTPsMutex);
-	gWTPs[i].isNotFree = CW_FALSE;
-	CWThreadMutexUnlock(&gWTPsMutex);
 	
 //-- Elena Agostini: fake method to delete all node about that WTP
 	nodeAVL * tmp;
