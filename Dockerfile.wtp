@@ -13,4 +13,4 @@ WORKDIR /openCAPWAP
 COPY . .
 RUN make clean && make
 RUN mkdir -p /var/log
-CMD ["/bin/bash", "/openCAPWAP/start_wtp.sh"]
+CMD ["/bin/bash", "/openCAPWAP/start_wtp_clean.sh"]
