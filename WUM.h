@@ -10,9 +10,9 @@
 
 #include "CWCommon.h"
 
-#define WTP_VERSION_MAJOR	0
-#define WTP_VERSION_MINOR	93
-#define WTP_VERSION_REVISION	2
+#define WTP_VERSION_MAJOR	1
+#define WTP_VERSION_MINOR	0
+#define WTP_VERSION_REVISION	0
 
 
 #define WTP_VERSION_REQUEST	1
