@@ -86,6 +86,7 @@ AC_OBJS = CWStubs.o AC.o ACConfigFile.o ACMainLoop.o ACDiscoveryState.o ACJoinSt
 	CWRandom.o CWStevens.o CWThread.o CWBinding.o CWVendorPayloadsAC.o \
 	ACBinding.o ACInterface.o ACSettingsFile.o timerlib.o tap.o \
 	ACIEEEConfigurationState.o CW80211InformationElements.o CWTunnel.o CWAVL.o \
+	AC_HTTP_API.o \
 	./HostapdHeaders/utils/os_unix.o \
 
 # list of generated object files for WTP.

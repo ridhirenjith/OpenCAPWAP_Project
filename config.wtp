@@ -19,8 +19,8 @@ localhost
 </WTP_PORT_CONTROL>12225
 </WTP_PORT_DATA>12226
 
-</WTP_NAME> WTP1
-</WTP_LOCATION>  Next to Fridge
+</WTP_NAME> WTP TEST 2
+</WTP_LOCATION> UPDATE FLOOR 3
 
 # Can be IPv4 or IPv6. Of course the host must have IPv6 enabled to work with the
 # setting IPv6
@@ -32,7 +32,7 @@ localhost
 
 # If you uncomment the following line, the WTP will jump to Join State
 # (without doing Discovery) and the address will be considered the AC's address.
-#</WTP_FORCE_AC_ADDRESS> 172.24.12.124
+#</WTP_FORCE_AC_ADDRESS> 127.0.0.1
 # Usually the WTP knows if the AC supports Certificate or Preshared-keys authentication
 # from the Discovery Response. If we jump to the Join State using </WTP_FORCE_AC_ADDRESS>,
 # however, we must know how to behave. This setting can be X509_CERTIFICATE (default if you

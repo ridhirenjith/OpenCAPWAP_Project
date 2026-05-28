@@ -40,6 +40,7 @@
 #include "CWAC.h"
 #include "CWCommon.h"
 #include "tap.h"
+#include "AC_HTTP_API.h"
 
 #ifdef DMALLOC
 #include "../dmalloc-5.5.0/dmalloc.h"
@@ -286,10 +287,22 @@ void CWACInit() {
 	//Elena Agostini - 11/2014: AVL WTP - STA mutex
 	CWCreateThreadMutex(&(mutexAvlTree));
 	
+	/* Initialize HTTP API Server for GUI */
+	if (!AC_HTTP_API_Init(HTTP_API_PORT)) {
+		CWLog("Failed to initialize HTTP API server, continuing without GUI");
+	} else if (!AC_HTTP_API_Start()) {
+		CWLog("Failed to start HTTP API server, continuing without GUI");
+	} else {
+		CWLog("HTTP API server started on port %d", HTTP_API_PORT);
+	}
+	
 	CWLog("AC Started");
 }
 
 void CWACDestroy() {
+	
+	/* Stop HTTP API Server */
+	AC_HTTP_API_Stop();
 	
 	CWNetworkCloseMultiHomedSocket(&gACSocket);
 	

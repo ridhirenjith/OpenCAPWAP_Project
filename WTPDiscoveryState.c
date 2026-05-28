@@ -554,9 +554,10 @@ CWBool CWParseDiscoveryResponseMessage(char *msg,
 				ACInfoPtr->IPv6AddressesCount++;
 				completeMsg.offset += len;
 				break;
-			default:
-				return CWErrorRaise(CW_ERROR_INVALID_FORMAT,
-					"Unrecognized Message Element");
+		default:
+			CWDebugLog("Unknown element type: %d len: %d - skipping", type, len);
+			completeMsg.offset += len;
+			break;
 		}
 
 		/* CWDebugLog("bytes: %d/%d",
