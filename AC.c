@@ -289,9 +289,9 @@ void CWACInit() {
 	
 	/* Initialize HTTP API Server for GUI */
         /*
-	if (!AC_HTTP_API_Init(HTTP_API_PORT)) {
+	// if (!AC_HTTP_API_Init(HTTP_API_PORT)) {
 		CWLog("Failed to initialize HTTP API server, continuing without GUI");
-	} else if (!AC_HTTP_API_Start()) {
+	// } else if (!AC_HTTP_API_Start()) {
 		CWLog("Failed to start HTTP API server, continuing without GUI");
 	} else {
 		CWLog("HTTP API server started on port %d", HTTP_API_PORT);
