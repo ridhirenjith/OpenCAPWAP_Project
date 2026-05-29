@@ -13,10 +13,14 @@ services:
       context: .
       dockerfile: Dockerfile.ac
     container_name: capwap-ac
-    networks:
-      capwap-net:
-        ipv4_address: 172.20.0.2
+    network_mode: host
     privileged: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - /var/log:/var/log
     ports:
       - "5246:5246/udp"
       - "5247:5247/udp"
